@@ -16,7 +16,6 @@ data_dir = "./trainingSmaller"
 batch_size = 32
 img_height = 100
 img_width = 100
-
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
   data_dir,
   validation_split=0.2,
