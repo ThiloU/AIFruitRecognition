@@ -21,6 +21,7 @@ To input your own pictures for prediction, simply change line 20: ```predictionP
 
 If you want to create your own model, take a look at the file "fruitClassificationAugmentationDropoutModelSave.py": 
 In line 14 you can change the directory with the training pictures and
-in line 15 you can change the number of epochs you want to train your model for (the more epochs, the better the finished model)
+in line 15 you can change the number of epochs you want to train your model for (the more epochs, the better the finished model).
+
 You can then start the program using ```python3 fruitClassificationAugmentationDropoutModelSave.py```
-After the program has finished, it will write the model in the ./savedModel directory where you can ue it for future Predictions
+After the program has finished, it will write the model in the ./savedModel directory where you can use it for future Predictions
