@@ -1,38 +1,39 @@
-import matplotlib.pyplot as plt
-import numpy as np
 import os
-import cv2
-
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 0 => log everything; 1 => no INFO; 2 => no INFO/WARNINGS; 3 => no INFO/WARNINGS/ERRORS
 
-import PIL
 import tensorflow as tf
-import pathlib
-from operator import itemgetter
-
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
+import PIL
+import pathlib
+from operator import itemgetter
+import numpy as np
+
+import cv2
+
+
+key = cv2.waitKey(1)
+webcam = cv2.VideoCapture(0)
 
 def getImage():
-    key = cv2. waitKey(1)
-    webcam = cv2.VideoCapture(0)
-    print("Found webcam")
     while True:
         check, frame = webcam.read()
-        #print("Is the webcam running? " + str(check)) #prints true as long as the webcam is running
+        #print(check) #prints true as long as the webcam is running
         #print(frame) #prints matrix values of each framecd
         cv2.imshow("Capturing", frame)
         key = cv2.waitKey(1)
         if key == ord('s'):
+            print("Saving image...")
             cv2.imwrite(filename='saved_img.jpg', img=frame)
+            print("Saved image")
             webcam.release()
             img_new = cv2.imread('saved_img.jpg')
             img_new = cv2.imshow("Captured Image", img_new)
             cv2.waitKey(1650)
-            cv2.destroyAllWindows()
             break
+
 
 
 img_height = 100
