@@ -12,6 +12,7 @@ from tensorflow.keras.models import Sequential
 
 #data_dir = "./flowerPhotos"
 data_dir = "./trainingSmaller"
+epochs=100
 
 batch_size = 32
 img_height = 100
@@ -52,7 +53,7 @@ data_augmentation = keras.Sequential(
   ]
 )
 
-num_classes = 5
+#num_classes = 5 #is this needed?
 
 model = Sequential([
   data_augmentation,
@@ -67,7 +68,7 @@ model = Sequential([
   layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(num_classes)
+  #layers.Dense(num_classes) # is this needed?
 ])
 
 model.compile(optimizer='adam',
@@ -75,7 +76,6 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 model.summary()
 
-epochs=100
 history = model.fit(
   train_ds,
   validation_data=val_ds,
