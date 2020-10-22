@@ -13,7 +13,7 @@ Recognising different kinds of fruits and vegetables on photos using Python3 and
 
 All other dependencies should be pre-installed
 
-Now you have to clone the repository into a folder and also unpack [this](https://drive.google.com/file/d/1NjBw3OjpYbcKbrk9fxnqXcKJwJHDdFql/view?usp=sharing) file containing the training data.
+Now you have to clone the repository into a folder and also unpack [this](https://drive.google.com/file/d/13uA1F6nFLu1g2SXJdvJRoRPEpJeLl5nL/view?usp=sharing) file containing the training data.
 
  There is already a pre-learned model included, so you can just execute the file "fruitClassificationModelLoadAndPredictFromFile.py" using this command:
 ```python3 fruitClassificationModelLoadAndPredictFromFile.py```
