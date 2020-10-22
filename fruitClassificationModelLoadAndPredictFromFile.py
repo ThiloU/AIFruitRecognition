@@ -17,18 +17,23 @@ img_height = 100
 img_width = 100
 
 data_dir = "./trainingSmaller"
-predictionPath = "./predictionPhotos/appleOwn.jpg"
+predictionPath = "./predictionPhotosFruits/bananaOwn2.jpg"
+# predictionPath = "./saved_img.jpg"
+modelPath = "./savedModel"
 
 classes = tf.keras.preprocessing.image_dataset_from_directory(data_dir)
 class_names = classes.class_names
 
-model = tf.keras.models.load_model('./savedModel')
+model = tf.keras.models.load_model(modelPath)
+
+# raw_model = tf.keras.models.load_model('./savedModel')
+# model = tf.keras.Sequential([raw_model, tf.keras.layers.Softmax()])
 
 img = keras.preprocessing.image.load_img(
     predictionPath, target_size=(img_height, img_width)
 )
 img_array = keras.preprocessing.image.img_to_array(img)
-img_array = tf.expand_dims(img_array, 0) # Create a batch
+img_array = tf.expand_dims(img_array, 0)  # Create a batch
 
 predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
@@ -44,4 +49,4 @@ for num, name in enumerate(class_names):
 classAndProb = sorted(classAndProb, key=itemgetter(1), reverse=True)
 print("")
 for i in classAndProb:
-    print("Content: {} -- Probability {}%".format(i[0],i[1]) )
+    print("Content: {} -- Probability {}%".format(i[0], i[1]))
