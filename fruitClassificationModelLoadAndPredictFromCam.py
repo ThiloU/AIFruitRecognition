@@ -62,10 +62,27 @@ score = tf.nn.softmax(predictions[0])
 
 fruitName = class_names[np.argmax(score)]
 probability = 100 * np.max(score)
+fruit = "./audio/" + fruitName + '.mp3'
+notSure = "./audio/notSure.mp3"
+connectingOr = "./audio/or.mp3"
+
+classAndProb = []
+score = score.numpy()
+for num, name in enumerate(class_names):
+    classAndProb.append([name, "{:.2f}".format(float(score[num])*100)])
+classAndProb = sorted(classAndProb, key=itemgetter(1), reverse=True)
+
+fruitSecondChoice = "./audio/" + classAndProb[1][0] + '.mp3'
+
 
 print(
     "This image most likely belongs to {} with a {:.2f} percent confidence."
     .format(fruitName, probability))
 
-fileName = "./audio/" + fruitName + '.mp3'
-playsound(fileName)
+if(probability >= 90):
+    playsound(fruit)
+else:
+    playsound(notSure)
+    playsound(fruit)
+    playsound(connectingOr)
+    playsound(fruitSecondChoice)

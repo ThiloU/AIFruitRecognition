@@ -17,8 +17,8 @@ img_height = 100
 img_width = 100
 
 data_dir = "./pictures/trainingSmaller"
-predictionPath = "./pictures/predictionPhotosFruits/bananaOwn2.jpg"
-# predictionPath = "./data/saved_img.jpg"
+#predictionPath = "./pictures/predictionPhotosFruits/bananaOwn2.jpg"
+predictionPath = "./data/saved_img.jpg"
 modelPath = "./data/savedModel"
 
 classes = tf.keras.preprocessing.image_dataset_from_directory(data_dir)
