@@ -5,6 +5,7 @@ import PIL
 import tensorflow as tf
 import pathlib
 from operator import itemgetter
+import json
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -13,6 +14,7 @@ from tensorflow.keras.models import Sequential
 # data_dir = "./pictures/flowerPhotos"
 data_dir = "./pictures/trainingSmaller"
 modelPath = "./data/savedModel"
+classNamesPath = "./data/classes.json"
 epochs = 50
 
 batch_size = 32
@@ -82,6 +84,9 @@ history = model.fit(
 )
 
 model.save(modelPath)
+jsonClasses = json.dumps(class_names)
+with open(classNamesPath, "w") as f:
+    json.dump(jsonClasses, f)
 
 # Plotting the accuracy START
 acc = history.history['accuracy']

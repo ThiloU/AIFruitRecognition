@@ -10,6 +10,7 @@ import PIL
 import pathlib
 from operator import itemgetter
 import numpy as np
+import json
 
 import cv2
 from playsound import playsound
@@ -40,14 +41,15 @@ def getImage():
 img_height = 100
 img_width = 100
 
-data_dir = "./pictures/trainingSmaller"
 imgSavePath = "./data/saved_img.jpg"
-getImage()
+classNamesPath = "./data/classes.json"
 predictionPath = "./data/saved_img.jpg"
 modelPath = "./data/savedModel"
 
-classes = tf.keras.preprocessing.image_dataset_from_directory(data_dir)
-class_names = classes.class_names
+with open(classNamesPath, "r") as f:
+    class_names = json.loads(json.load(f))
+
+getImage()
 
 model = tf.keras.models.load_model(modelPath)
 

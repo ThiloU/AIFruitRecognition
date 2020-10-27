@@ -8,6 +8,7 @@ import PIL
 import tensorflow as tf
 import pathlib
 from operator import itemgetter
+import json
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -16,13 +17,13 @@ from tensorflow.keras.models import Sequential
 img_height = 100
 img_width = 100
 
-data_dir = "./pictures/trainingSmaller"
 #predictionPath = "./pictures/predictionPhotosFruits/bananaOwn2.jpg"
 predictionPath = "./data/saved_img.jpg"
 modelPath = "./data/savedModel"
+classNamesPath = "./data/classes.json"
 
-classes = tf.keras.preprocessing.image_dataset_from_directory(data_dir)
-class_names = classes.class_names
+with open(classNamesPath, "r") as f:
+    class_names = json.loads(json.load(f))
 
 model = tf.keras.models.load_model(modelPath)
 
