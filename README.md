@@ -11,6 +11,7 @@ Recognising different kinds of fruits and vegetables on photos using Python3 and
 - ```pip3 install scipy```
 - ```pip3 install playsound```
 - ```pip3 install opencv-python```
+- ```pip3 install flask```
 
 
 All other dependencies should be pre-installed
